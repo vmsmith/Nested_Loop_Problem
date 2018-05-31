@@ -31,11 +31,11 @@ I begin by assigning fixed values to α and ε:
 
 I want to let the other probabilities -- β, γ, and δ -- loop through their various combinations.  In this way I actually get a distribution of expected values, and for the time being that is what I want.
 
-Since α + β + γ + δ + ε = 1, it follows that 1 - α - β = γ + δ + ε.
+Since α + β + γ + δ + ε = 1, it follows that γ + δ + ε = 1 - (α + β).
 
 So I create a variable to reflect that:
 
-    mid_percentages <- 1 - alpha - epsilon
+    mid_percentages <- 1 - (alpha + epsilon)
 
 With these particular initial values of alpha and epsilon, mid_percentages equals 0.25.
 
