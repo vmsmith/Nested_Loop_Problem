@@ -20,9 +20,9 @@ And of course, the expected value is the sum of the probabilities times their as
 
 ![graphic #4](https://github.com/vmsmith/Nested_Loop_Problem/blob/master/graphics/EV4.png)  
 
-For the time being, I am mainly interested in scenarios A and E and their associated probabilities, α and ε.
-
 #### Approach  
+
+For the time being, I am mainly interested in scenarios A and E and their associated probabilities, α and ε.
 
 I begin by assigning fixed values to α and ε: 
 
