@@ -63,12 +63,43 @@ Here is my nested loop:
 
 I am having two problems.
 
-
 #### Problem #1  
+
+The first problem is that when I replace X (in line 9) with the variable, 
+
+    mid_percentages
+
+I get nothing.
+
+On the other hand, if I replace X with the specific value 0.25, I get something.
+
+And I can see when I run it that 
+
+    mid_percentages == 0.25
+
+So I don't know why the loop works with a specific numeric value but not a variable that equals that specific numeric value.
+
 
 
 #### Problem #2  
 
+The second problem -- which I discovered while trying to debug the first -- is that when I loop through, say, 0.25, I don't get the full range of results I expect.
+
+I expect something like this:
+
+    0.00		0.00		0.00
+    0.00		0.00		0.01
+    0.00		0.00		0.02
+    0.00		0.00		0.03
+
+	and so on...
+
+    0.25		0.25		0.22
+    0.25		0.25		0.23
+    0.25		0.25		0.24
+    0.25		0.25		0.25
+
+But I generally get some seemingly random subset of that.  As I increase the size of the variable `alpha`, and the variable `mid_percentages` gets smaller, the output seems to get more pathological.
 
 
 #### Conclusion  
