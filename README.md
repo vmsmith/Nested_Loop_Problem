@@ -31,6 +31,38 @@ I begin by assigning fixed values to α and ε:
 
 I want to let the other probabilities -- β, γ, and δ -- loop through their various combinations.  In this way I actually get a distribution of expected values, and for the time being that is what I want.
 
+Since α + β + γ + δ + ε = 1, it follows that 1 - α - β = γ + δ + ε.
+
+So I create a variable to reflect that:
+
+    mid_percentages <- 1 - alpha - epsilon
+
+With these particular initial values of alpha and epsilon, mid_percentages equals 0.25.
+
+Now I create another variable that will allow me to loop through the various possibilities:
+
+    percentages <- seq(0, mid_percentages, .01)
+
+And that variable looks like this:
+
+    [0.00, 0.01, 0.02, ..., 0.25]
+
+Now I'm ready to begin looping. (And in the spirit of Donald Knuth, I am not optimizing at this point. Later I'll look at the apply family, but not yet.)
+
+Here is my nested loop:
+
+    for(beta in percentages){
+      for(gamma in percentages){
+        for(delta in percentages){
+          if(beta + gamma + delta == X){
+            do something
+          }
+        }
+      }
+    }
+
+I am having two problems.
+
 
 #### Problem #1  
 
