@@ -4,7 +4,7 @@
 
 I am working on an expected value project where there are five scenarios (A - E): 
 
-[graphic #1]
+![graphic #1](https://github.com/vmsmith/Nested_Loop_Problem/blob/master/graphics/EV1.png)
 
 Each of those five scenarios has an assumed payoff:  
 
