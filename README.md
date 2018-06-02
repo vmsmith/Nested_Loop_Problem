@@ -26,7 +26,7 @@ For the time being, I am mainly interested in scenarios A and E and their associ
 
 I begin by assigning fixed values to α and ε: 
 
-    1: alpha <-  0.70
+    1: alpha <-  0.50
     2: epsilon <- 0.05
 
 Since α + β + γ + δ + ε = 1, it follows that γ + δ + ε = 1 - (α + β).
@@ -37,7 +37,7 @@ So I create a variable that will lay the groundwork for that:
 
     3: mid_percentages <- 1 - (alpha + epsilon)
 
-With these particular initial values of alpha and epsilon, mid_percentages equals 0.25.
+With these particular initial values of alpha and epsilon, `mid_percentages` equals 0.45, which is what I expect.
 
 Now I create a vector that will allow me to loop through the various possibilities:
 
@@ -45,7 +45,9 @@ Now I create a vector that will allow me to loop through the various possibiliti
 
 That vector looks like this:
 
-    5: [0.00, 0.01, 0.02, ..., 0.25]
+    5: [0.00, 0.01, 0.02, ..., 0.45]
+
+Again, this is what I expect.
 
 Now I'm ready to begin looping. (And in the spirit of Donald Knuth, I am not optimizing at this point. Later I'll look at the apply family, but not yet.)
 
@@ -54,52 +56,66 @@ Here is my nested loop:
     6: for(beta in percentages){
     7:   for(gamma in percentages){
     8:     for(delta in percentages){
-    9:       if(beta + gamma + delta == X){
+    9:       if(beta + gamma + delta == mid_percentages){
     10:        do something
     11:       }
     12:     }
     13:   }
     14: }
 
+And at this point, the `do something` in line 10 is:
+
+    10:        print(paste0(beta, " ", gamma, " ", delta))
+
 I am having two problems.
 
 #### Problem #1  
 
-The first problem is that when I replace X (in line 9) with the variable, 
+The first problem is that when I run the print statement in line 10, I expect something like this: 
 
-    mid_percentages
+    0		0	0.45
+    0		0	0.44
+    0		0	0.43
+    0		0	0.42
 
-I get nothing.
+	and so on...
+	
+    0.45	0	0
 
-On the other hand, if I replace X with the specific value 0.25, I get something.
+And what I actually get is this:
 
-And I can see when I run it that 
-
-    mid_percentages == 0.25
-
-So I don't know why the loop works with a specific numeric value but not a variable that equals that specific numeric value.
-
-
+    0 		0 	0.45
+    0 		0.03 	0.42
+    0 		0.09 	0.36
+    0 		0.15 	0.3  
+    
+    	and so on...
+	
+    0.42	0 	0.03
+    0.42 	0.03 	0
+    0.45 	0 	0
 
 #### Problem #2  
 
-The second problem -- which I discovered while trying to debug the first -- is that when I loop through, say, 0.25, I don't get the full range of results I expect.
+The second problem -- which I discovered while trying to debug the first -- is that when I replace `mid_percentages` in line 9 with `0.45` I expect to get the exact same output, but instead I get this:
 
-I expect something like this:
-
-    0.00		0.00		0.00
-    0.00		0.00		0.01
-    0.00		0.00		0.02
-    0.00		0.00		0.03
-
-	and so on...
-
-    0.25		0.25		0.22
-    0.25		0.25		0.23
-    0.25		0.25		0.24
-    0.25		0.25		0.25
-
-But I generally get some seemingly random subset of that.  As I increase the size of the variable `alpha`, and the variable `mid_percentages` gets smaller, the output seems to get more pathological.
-
-
+    0 		0.01 	0.44
+    0 		0.02 	0.43
+    0 		0.04 	0.41
+    0 		0.05 	0.4
+    0 		0.06 	0.39
+    0 		0.07 	0.38  
+    
+    	and so on...
+	
+    0.43 	0 	0.02
+    0.43 	0.01 	0.01
+    0.43 	0.02 	0
+    0.44 	0 	0.01
+    0.44 	0.01 	0
+    
 #### Conclusion  
+
+Experience has shown me that this is probably some incredibly simple mistake and that I've backed myself into a corner thinking about it and now can't get myself out.
+
+The exact code I am running is [here]().
