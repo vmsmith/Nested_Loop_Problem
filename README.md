@@ -74,9 +74,9 @@ I am having two problems.
 The first problem is that when I run the print statement in line 10, I expect something like this: 
 
     0		0	0.45
-    0		0	0.44
-    0		0	0.43
-    0		0	0.42
+    0		0.01	0.44
+    0		0.02	0.43
+    0		0.03	0.42
 
 	and so on...
 	
@@ -94,6 +94,8 @@ And what I actually get is this:
     0.42	0 	0.03
     0.42 	0.03 	0
     0.45 	0 	0
+
+A number of correct combinations of `beta`, `gamma`, and `delta` are being left out.
 
 #### Problem #2  
 
@@ -114,8 +116,10 @@ The second problem -- which I discovered while trying to debug the first -- is t
     0.44 	0 	0.01
     0.44 	0.01 	0
     
+Again, combinations are being left out, including the first and last that appeared when I used `mid_percentages`.
+    
 #### Conclusion  
 
-Experience has shown me that this is probably some incredibly simple mistake and that I've backed myself into a corner thinking about it and now can't get myself out.
+Experience has shown me that this is probably some incredibly simple mistake, but that I've backed myself into a corner thinking about it and now can't see my way out.
 
 The exact code I am running is [here](https://github.com/vmsmith/Nested_Loop_Problem/blob/master/code.R).
