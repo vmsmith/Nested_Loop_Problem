@@ -31,7 +31,7 @@ I begin by assigning fixed values to α and ε:
 
 Since α + β + γ + δ + ε = 1, it follows that γ + δ + ε = 1 - (α + β).
 
-I want to let the other probabilities -- β, γ, and δ -- loop through their various combinations.  In this way I actually get a distribution of expected values, and for the time being that is what I want.
+I want to let these other probabilities -- β, γ, and δ -- loop through their various combinations.  In this way I actually get a distribution of expected values, and for the time being that is what I want.
 
 So I create a variable that will lay the groundwork for that:
 
