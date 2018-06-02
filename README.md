@@ -29,9 +29,9 @@ I begin by assigning fixed values to α and ε:
     1: alpha <-  0.50
     2: epsilon <- 0.05
 
-Since α + β + γ + δ + ε = 1, it follows that γ + δ + ε = 1 - (α + β).
+Since the sum of all the probabilities has to equal 1 (α + β + γ + δ + ε = 1), it follows that the middle probabilities can be derived from the value of α and ε as follows: γ + δ + ε = 1 - (α + β).
 
-I want to let these other probabilities -- β, γ, and δ -- loop through their various combinations.  In this way I actually get a distribution of expected values, and for the time being that is what I want.
+With α and ε fixed, I want to let these other probabilities -- β, γ, and δ -- loop through their various acceptable combinations.  In this way I actually get a distribution of expected values, and for the time being that is what I want.
 
 So I create a variable that will lay the groundwork for that:
 
