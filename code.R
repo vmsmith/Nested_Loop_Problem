@@ -18,7 +18,7 @@ for(beta in percentages){
   for(gamma in percentages){
     # delta 
     for(delta in percentages){
-      if(round(beta + gamma + delta, 2) == mid_percentages){
+      if(round(beta + gamma + delta, 2) == round(mid_percentages, 2)){
         print(paste0(beta, " ", gamma, " ", delta))
       }
     }
