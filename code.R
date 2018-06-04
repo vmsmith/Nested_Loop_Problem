@@ -1,3 +1,4 @@
+sink("loop_output.txt", append = FALSE)
 rm(list = ls())
 
 # Best case scenario
@@ -17,11 +18,11 @@ for(beta in percentages){
   for(gamma in percentages){
     # delta 
     for(delta in percentages){
-      if(beta + gamma + delta == 0.45){
+      if(round(beta + gamma + delta, 2) == round(mid_percentages, 2)){
         print(paste0(beta, " ", gamma, " ", delta))
       }
     }
   }
 }
-
+sink()
 
